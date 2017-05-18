@@ -12,29 +12,47 @@ import App from "./components/App.jsx";
 import { get } from "./helpers/ajaxRequest";
 import * as reducers from "./reducers";
 
+var enhancer;
+if (DEVELOPMENT) {
+  enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+}
+
 const store = createStore(
   combineReducers(reducers),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  enhancer
 );
+
+const appRoot = document.getElementById("app");
 
 const render = () => {
   // const App = require("./components/App.jsx").default;
-  ReactDOM.render((
-    <AppContainer>
+  if (DEVELOPMENT) {
+    ReactDOM.render((
+      <AppContainer>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </AppContainer>
+    ), appRoot);
+  }
+  else {
+    ReactDOM.render((
       <Provider store={store}>
         <App />
       </Provider>
-    </AppContainer>
-  ), document.getElementById("app"));
+    ), appRoot);
+  }
 };
 
 render();
 
-// Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept("./components/App.jsx", () => {
-    render();
-  });
+if (DEVELOPMENT) {
+  // Hot Module Replacement API
+  if (module.hot) {
+    module.hot.accept("./components/App.jsx", () => {
+      render();
+    });
+  }
 }
 
 (async () => {

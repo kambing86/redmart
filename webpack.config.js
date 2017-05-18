@@ -3,6 +3,7 @@ const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 // const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const sourcePath = path.join(__dirname, "src");
 const deployPath = path.join(__dirname, "dist");
 const serverPort = 8080;
 
@@ -16,7 +17,7 @@ const config = {
       "./index.jsx",
     ],
   },
-  context: path.join(__dirname, "src"),
+  context: sourcePath,
   output: {
     path: deployPath,
     filename: "[name].js",
@@ -38,7 +39,7 @@ const config = {
         ],
       }, {
         test: /\.jsx?$/,
-        include: path.join(__dirname, "src"),
+        include: sourcePath,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
         options: {
@@ -70,6 +71,9 @@ const config = {
     // "angular-validation": "validation",
   },
   plugins: [
+    new webpack.DefinePlugin({
+      DEVELOPMENT: process.env.NODE_ENV === "development",
+    }),
     new CopyWebpackPlugin([{ from: "assets" }])
     // new webpack.ProvidePlugin({
     //   "Promise": "bluebird"

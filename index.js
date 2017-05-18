@@ -10,7 +10,7 @@ app.use(webpackDevMiddleware(compiler, {
   publicPath: "/" // Same as `output.publicPath` in most cases.
 }));
 
-app.use(express.static("deploy"));
+app.use(express.static("dist"));
 
 app.listen(8080, function () {
 });
