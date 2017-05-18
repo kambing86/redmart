@@ -16,6 +16,10 @@ const config = {
     "index": [
       "./index.jsx",
     ],
+    vendor: [
+      "react",
+      "react-dom"
+    ]
   },
   context: sourcePath,
   output: {
@@ -71,6 +75,10 @@ const config = {
     // "angular-validation": "validation",
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "vendor.js",
+    }),
     new webpack.DefinePlugin({
       DEVELOPMENT: process.env.NODE_ENV === "development",
     }),
