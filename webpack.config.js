@@ -18,7 +18,9 @@ const config = {
     ],
     vendor: [
       "react",
-      "react-dom"
+      "react-dom",
+      "redux",
+      "react-redux",
     ]
   },
   context: sourcePath,
@@ -77,10 +79,12 @@ const config = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
-      filename: "vendor.js",
     }),
     new webpack.DefinePlugin({
       DEVELOPMENT: process.env.NODE_ENV === "development",
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
     }),
     new CopyWebpackPlugin([{ from: "assets" }]),
     new webpack.optimize.UglifyJsPlugin({

@@ -1,9 +1,14 @@
-import "react-hot-loader/patch";
+if (DEVELOPMENT) {
+  require("react-hot-loader/patch");
+}
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import { AppContainer } from "react-hot-loader";
+var AppContainer;
+if (DEVELOPMENT) {
+  AppContainer = require("react-hot-loader").AppContainer;
+}
 
 import "./index.pug";
 import "./index.scss";
