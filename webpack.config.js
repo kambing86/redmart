@@ -8,7 +8,7 @@ const deployPath = path.join(__dirname, "dist");
 const serverPort = 8080;
 
 const config = {
-  devtool: "cheap-module-source-map",
+  devtool: "source-map",
   entry: {
     "babel-polyfill": [
       "babel-polyfill",
@@ -74,7 +74,21 @@ const config = {
     new webpack.DefinePlugin({
       DEVELOPMENT: process.env.NODE_ENV === "development",
     }),
-    new CopyWebpackPlugin([{ from: "assets" }])
+    new CopyWebpackPlugin([{ from: "assets" }]),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false,
+      },
+      mangle: {
+        props: {
+          regex: /^rn_.+_rn$/,
+        },
+      },
+      output: {
+        comments: false,
+      },
+    })
     // new webpack.ProvidePlugin({
     //   "Promise": "bluebird"
     // }),
@@ -95,23 +109,6 @@ const config = {
 
 if (process.env.NODE_ENV === "development") {
   config.devtool = "cheap-module-eval-source-map";
-  config.plugins.push(new webpack.LoaderOptionsPlugin({
-    debug: true,
-  }));
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    sourceMap: true,
-    compress: {
-      warnings: false,
-    },
-    mangle: {
-      props: {
-        regex: /^rn_.+_rn$/,
-      },
-    },
-    output: {
-      comments: false,
-    },
-  }));
 
   // enable HMR globally
   // needed if webpack-dev-server run without --hot
