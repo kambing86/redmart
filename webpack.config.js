@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 // const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const deployPath = path.join(__dirname, "dist");
@@ -69,6 +70,7 @@ const config = {
     // "angular-validation": "validation",
   },
   plugins: [
+    new CopyWebpackPlugin([{ from: "assets" }])
     // new webpack.ProvidePlugin({
     //   "Promise": "bluebird"
     // }),

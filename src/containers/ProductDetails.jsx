@@ -15,7 +15,7 @@ class ProductDetails extends React.Component {
         <div className="product-details flex-row flex-auto">
           <div className="image-column">
             <div>{product.name}</div>
-            <img src={`/assets/${product.image}`} />
+            <img src={`/images/${product.image}`} />
           </div>
           <div>
             <div>{product.measurement}</div>

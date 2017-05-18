@@ -38,7 +38,7 @@ class Product extends React.Component {
     return (
       <Link to={link}>
         <div className="product-container text-center">
-          <img src={`/assets/${product.image}`} />
+          <img src={`/images/${product.image}`} />
           <div className="product-title">
             <div>{product.name}</div>
             <div>{product.measurement}</div>
