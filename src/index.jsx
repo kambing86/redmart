@@ -5,9 +5,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-var AppContainer;
 if (DEVELOPMENT) {
-  AppContainer = require("react-hot-loader").AppContainer;
+  var AppContainer = require("react-hot-loader").AppContainer;
 }
 
 import "./index.pug";
@@ -30,7 +29,6 @@ const store = createStore(
 const appRoot = document.getElementById("app");
 
 const render = () => {
-  // const App = require("./components/App.jsx").default;
   if (DEVELOPMENT) {
     ReactDOM.render((
       <AppContainer>

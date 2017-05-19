@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const sourcePath = path.join(__dirname, "src");
 const deployPath = path.join(__dirname, "dist");
 const serverPort = 8080;
+const environment = process.env.NODE_ENV;
 
 const config = {
   devtool: "source-map",
@@ -16,7 +17,7 @@ const config = {
     "index": [
       "./index.jsx",
     ],
-    vendor: [
+    "vendor": [
       "react",
       "react-dom",
       "redux",
@@ -78,12 +79,12 @@ const config = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
+      names: ["vendor", "manifest"],
     }),
     new webpack.DefinePlugin({
-      DEVELOPMENT: process.env.NODE_ENV === "development",
+      DEVELOPMENT: environment === "development",
       "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+        NODE_ENV: JSON.stringify(environment)
       }
     }),
     new CopyWebpackPlugin([{ from: "assets" }]),
@@ -100,7 +101,10 @@ const config = {
       output: {
         comments: false,
       },
-    })
+    }),
+    // new webpack.SourceMapDevToolPlugin({
+    //   exclude: /(node_modules|bower_components)/
+    // }),
     // new webpack.ProvidePlugin({
     //   "Promise": "bluebird"
     // }),
@@ -119,7 +123,7 @@ const config = {
   }
 };
 
-if (process.env.NODE_ENV === "development") {
+if (environment === "development") {
   config.devtool = "cheap-module-eval-source-map";
 
   // enable HMR globally
