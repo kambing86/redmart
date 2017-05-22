@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 if (DEVELOPMENT) {
-  var AppContainer = require("react-hot-loader").AppContainer;
+  var AppContainer = require("./helpers/AppContainer").default;
 }
 
 import "./index.pug";

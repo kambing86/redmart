@@ -102,9 +102,10 @@ const config = {
         comments: false,
       },
     }),
-    // new webpack.SourceMapDevToolPlugin({
-    //   exclude: /(node_modules|bower_components)/
-    // }),
+    new webpack.SourceMapDevToolPlugin({
+      filename: "[file].map",
+      append: false
+    }),
     // new webpack.ProvidePlugin({
     //   "Promise": "bluebird"
     // }),
