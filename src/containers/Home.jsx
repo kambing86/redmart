@@ -12,33 +12,30 @@ import removeCart from "../actions/removeCart";
 
 import "./Home.scss";
 
-class Home extends React.Component {
-  render() {
-    const { dispatch, state } = this.props;
-    const { filters, products } = state;
-    return (
-      <div className="full-frame flex-col">
-        <TopBar className="flex-auto" />
-        <div className="flex-row flex-auto">
-          <div className="left-panel">
-            <FilterList
-              filters={filters}
-              onClearClick={() => { dispatch(clearFilter()); }}
-              onFilterClick={((data) => { dispatch(checkFilter(data)); })}
-            />
-          </div>
-          <div className="main-panel">
-            <ProductList
-              products={products}
-              onAddCart={(product) => { dispatch(addCart(product)); }}
-              onRemoveCart={(product) => { dispatch(removeCart(product)); }}
-            />
-          </div>
+const Home = ({ dispatch, state }) => {
+  const { filters, products } = state;
+  return (
+    <div className="full-frame flex-col">
+      <TopBar className="flex-auto" />
+      <div className="flex-row flex-auto">
+        <div className="left-panel">
+          <FilterList
+            filters={filters}
+            onClearClick={() => { dispatch(clearFilter()); }}
+            onFilterClick={((data) => { dispatch(checkFilter(data)); })}
+          />
+        </div>
+        <div className="main-panel">
+          <ProductList
+            products={products}
+            onAddCart={(product) => { dispatch(addCart(product)); }}
+            onRemoveCart={(product) => { dispatch(removeCart(product)); }}
+          />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 function doFilter(filter, product) {
   switch (filter.name) {
