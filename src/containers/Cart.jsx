@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import TopBar from "./TopBar.jsx";
-import ProductList from "../components/ProductList.jsx";
+import TopBar from "./TopBar";
+import ProductList from "../components/ProductList";
 
 import addCart from "../actions/addCart";
 import removeCart from "../actions/removeCart";

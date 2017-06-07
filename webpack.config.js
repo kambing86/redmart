@@ -33,7 +33,7 @@ const config = {
     modules: [
       "node_modules",
     ],
-    // extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [

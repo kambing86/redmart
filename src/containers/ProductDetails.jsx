@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import TopBar from "./TopBar.jsx";
+import TopBar from "./TopBar";
 
 import "./ProductDetails.scss";
 

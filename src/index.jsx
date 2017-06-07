@@ -13,7 +13,7 @@ if (DEVELOPMENT) {
 import "./index.pug";
 import "./index.scss";
 
-import App from "./components/App.jsx";
+import App from "./components/App";
 import ajaxRequest from "./helpers/ajaxRequest";
 import * as reducers from "./reducers";
 
@@ -52,7 +52,7 @@ render();
 if (DEVELOPMENT) {
   // Hot Module Replacement API
   if (module.hot) {
-    module.hot.accept("./components/App.jsx", () => {
+    module.hot.accept("./components/App", () => {
       render();
     });
   }

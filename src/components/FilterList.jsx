@@ -1,6 +1,6 @@
 import React from "react";
 
-import Filter from "./Filter.jsx";
+import Filter from "./Filter";
 
 import "./FilterList.scss";
 

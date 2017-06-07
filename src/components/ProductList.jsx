@@ -1,7 +1,7 @@
 import React from "react";
 import hash from "object-hash";
 
-import Product from "./Product.jsx";
+import Product from "./Product";
 
 const ProductList = ({ products, onAddCart, onRemoveCart }) => {
   const productArray = products.map(product => (
