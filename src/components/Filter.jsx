@@ -4,15 +4,21 @@ class Filter extends React.Component {
   render() {
     const { filter, onClick } = this.props;
     const { name, value, checked } = filter;
+    const id = name + value;
     return (
-      <div
-        onClick={() => {
-          onClick({ name, value });
-        }}
-        role="presentation"
-      >
-        <input type="checkbox" id={name} name={name} value={value} checked={checked} readOnly />
-        <label htmlFor={name}>{value}</label>
+      <div>
+        <input
+          type="checkbox"
+          id={id}
+          name={name}
+          value={value}
+          checked={checked}
+          readOnly
+          onClick={() => {
+            onClick({ name, value });
+          }}
+        />
+        <label htmlFor={id}>{value}</label>
       </div>
     );
   }

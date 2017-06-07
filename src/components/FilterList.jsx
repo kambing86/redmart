@@ -13,14 +13,14 @@ class FilterList extends React.Component {
       }
       return acc;
     }, []);
-    const filterCategoryArray = headerArray.map((header, index) => {
+    const filterCategoryArray = headerArray.map((header) => {
       const valueArray =
         filters.filter(filter => filter.header === header)
-          .map((filter, index2) => (
-            <Filter key={index2} filter={filter} onClick={onFilterClick} />
-            ));
+          .map(filter => (
+            <Filter key={`${header}_${filter.value}`} filter={filter} onClick={onFilterClick} />
+          ));
       return (
-        <div key={index}>
+        <div key={header}>
           <h3>{header}</h3>
           {valueArray}
         </div>
