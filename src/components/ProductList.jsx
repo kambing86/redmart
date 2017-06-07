@@ -1,7 +1,7 @@
 import React from "react";
 import hash from "object-hash";
 
-import Product from "./Product";
+import Product from "./Product.jsx";
 
 class ProductList extends React.Component {
   render() {

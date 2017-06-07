@@ -57,7 +57,8 @@
     "react/prop-types": 0,
     "import/no-extraneous-dependencies": 0,
     "import/first": 0,
-    "import/newline-after-import": 0
+    "import/newline-after-import": 0,
+    "import/extensions": 0
   },
   "globals": {
     "DEVELOPMENT": true

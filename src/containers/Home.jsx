@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import TopBar from "./TopBar";
-import FilterList from "../components/FilterList";
-import ProductList from "../components/ProductList";
+import TopBar from "./TopBar.jsx";
+import FilterList from "../components/FilterList.jsx";
+import ProductList from "../components/ProductList.jsx";
 
 import clearFilter from "../actions/clearFilter";
 import checkFilter from "../actions/checkFilter";

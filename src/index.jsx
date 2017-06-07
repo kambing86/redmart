@@ -13,7 +13,7 @@ if (DEVELOPMENT) {
 import "./index.pug";
 import "./index.scss";
 
-import App from "./components/App";
+import App from "./components/App.jsx";
 import ajaxRequest from "./helpers/ajaxRequest";
 import * as reducers from "./reducers";
 
