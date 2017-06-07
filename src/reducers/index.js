@@ -4,5 +4,5 @@ import productReducer from "./productReducer";
 export {
   cartReducer,
   filterReducer,
-  productReducer
+  productReducer,
 };

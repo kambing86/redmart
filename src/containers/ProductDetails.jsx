@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import TopBar from "./TopBar.jsx";
+import TopBar from "./TopBar";
 
 import "./ProductDetails.scss";
 
@@ -15,17 +15,20 @@ class ProductDetails extends React.Component {
         <div className="product-details flex-row flex-auto">
           <div className="image-column">
             <div>{product.name}</div>
-            <img src={`/images/${product.image}`} />
+            <img src={`/images/${product.image}`} alt={product.name} />
           </div>
           <div>
             <div>{product.measurement}</div>
             <div><b>${product.price}</b></div>
             <div className="product-desc">{product.desc}</div>
-            <button className="btn-add-cart" onClick={(event) => {
-              event.preventDefault();
-              dispatch({ type: "ADD_CART", product });
-              history.push("/cart");
-            }}>Add To Cart</button>
+            <button
+              className="btn-add-cart"
+              onClick={(event) => {
+                event.preventDefault();
+                dispatch({ type: "ADD_CART", product });
+                history.push("/cart");
+              }}
+            >Add To Cart</button>
           </div>
         </div>
       );
@@ -39,8 +42,6 @@ class ProductDetails extends React.Component {
   }
 }
 
-export default withRouter(connect((state, ownProps) => {
-  return {
-    state: state.productReducer.find(product => product.id == ownProps.match.params.id)
-  };
-})(ProductDetails));
+export default withRouter(connect((state, ownProps) => ({
+  state: state.productReducer.find(product => product.id === ownProps.match.params.id),
+}))(ProductDetails));

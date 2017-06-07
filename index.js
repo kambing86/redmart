@@ -14,5 +14,5 @@ const app = express();
 app.use(skipMap());
 app.use(express.static("dist"));
 
-app.listen(8080, function () {
+app.listen(8080, () => {
 });

@@ -1,1 +1,1 @@
-export default (data) => ({ type: "CHECK_FILTER", ...data });
+export default data => ({ type: "CHECK_FILTER", ...data });

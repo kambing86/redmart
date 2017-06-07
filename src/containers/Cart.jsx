@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import TopBar from "./TopBar.jsx";
-import ProductList from "../components/ProductList.jsx";
+import TopBar from "./TopBar";
+import ProductList from "../components/ProductList";
 
 import addCart from "../actions/addCart";
 import removeCart from "../actions/removeCart";
@@ -13,7 +13,7 @@ class Cart extends React.Component {
   render() {
     const { state: productsInCarts, dispatch } = this.props;
     let emptyDescription = null;
-    if (productsInCarts.length == 0) {
+    if (productsInCarts.length === 0) {
       emptyDescription = (
         <div className="full-frame flex-auto text-center">
           <div className="empty-cart">Your cart is empty</div>
@@ -21,15 +21,18 @@ class Cart extends React.Component {
       );
     }
     let totalAmount = 0;
-    productsInCarts.forEach(product => {
+    productsInCarts.forEach((product) => {
       totalAmount += product.count * parseFloat(product.price);
     });
     return (
       <div className="cart-page full-frame flex-col">
         <TopBar className="flex-auto" />
-        <ProductList className="flex-auto" products={productsInCarts}
-          onAddCart={product => { dispatch(addCart(product)); }}
-          onRemoveCart={product => { dispatch(removeCart(product)); }} />
+        <ProductList
+          className="flex-auto"
+          products={productsInCarts}
+          onAddCart={(product) => { dispatch(addCart(product)); }}
+          onRemoveCart={(product) => { dispatch(removeCart(product)); }}
+        />
         {emptyDescription}
         <div className="cart-total text-right">Total: ${totalAmount.toFixed(2)}</div>
       </div>
@@ -37,8 +40,6 @@ class Cart extends React.Component {
   }
 }
 
-export default connect(state => {
-  return {
-    state: state.cartReducer
-  };
-})(Cart);
+export default connect(state => ({
+  state: state.cartReducer,
+}))(Cart);

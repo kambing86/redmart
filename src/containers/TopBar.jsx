@@ -8,7 +8,7 @@ class TopBar extends React.Component {
   render() {
     const { state: productsInCarts } = this.props;
     let totalCount = 0;
-    productsInCarts.forEach(product => {
+    productsInCarts.forEach((product) => {
       totalCount += product.count;
     });
     let cartBubble = null;
@@ -28,8 +28,6 @@ class TopBar extends React.Component {
   }
 }
 
-export default connect(state => {
-  return {
-    state: state.cartReducer
-  };
-})(TopBar);
+export default connect(state => ({
+  state: state.cartReducer,
+}))(TopBar);

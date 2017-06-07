@@ -2,7 +2,7 @@ function get(address) {
   return new Promise((resolve, reject) => {
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.addEventListener("load", () => {
-      if (xmlhttp.status == 200) {
+      if (xmlhttp.status === 200) {
         resolve(xmlhttp.responseText);
       } else {
         reject(new Error(xmlhttp.responseText));
@@ -16,6 +16,6 @@ function get(address) {
   });
 }
 
-export {
-  get
+export default {
+  get,
 };

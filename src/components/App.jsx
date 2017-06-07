@@ -1,8 +1,8 @@
 import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
-import Home from "../containers/Home.jsx";
-import Cart from "../containers/Cart.jsx";
-import ProductDetails from "../containers/ProductDetails.jsx";
+import Home from "../containers/Home";
+import Cart from "../containers/Cart";
+import ProductDetails from "../containers/ProductDetails";
 
 class App extends React.Component {
   render() {

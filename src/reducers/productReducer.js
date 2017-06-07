@@ -4,7 +4,7 @@ function productReducer(state = [], action) {
       {
         return action.data.products.map(product => ({
           ...product,
-          id: product.name + product.measurement + product.price
+          id: product.name + product.measurement + product.price,
         }));
       }
     default:

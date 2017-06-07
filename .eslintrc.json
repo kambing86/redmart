@@ -1,5 +1,5 @@
 {
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "standard", "airbnb"],
   "env": {
     "browser": true,
     "node": true,
@@ -43,13 +43,21 @@
         "SwitchCase": 1
       }
     ],
+    "handle-callback-err": 2,
+    "no-underscore-dangle": 0,
+    "global-require": 0,
     "react/jsx-uses-vars": 2,
     "react/jsx-uses-react": 2,
     "react/jsx-indent": [
       2,
       2
     ],
-    "react/jsx-curly-spacing": [2, "never"]
+    "react/jsx-curly-spacing": [2, "never"],
+    "react/prefer-stateless-function": 0,
+    "react/prop-types": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/first": 0,
+    "import/newline-after-import": 0
   },
   "globals": {
     "DEVELOPMENT": true

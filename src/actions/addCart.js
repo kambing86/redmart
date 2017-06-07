@@ -1,1 +1,1 @@
-export default (product) => ({ type: "ADD_CART", product });
+export default product => ({ type: "ADD_CART", product });

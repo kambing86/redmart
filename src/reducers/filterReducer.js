@@ -1,6 +1,6 @@
 const filterHeaders = {
   brand: "Brands",
-  price: "Price"
+  price: "Price",
 };
 
 function filterReducer(state = [], action) {
@@ -12,16 +12,16 @@ function filterReducer(state = [], action) {
             value,
             header: filterHeaders[filter.name],
             checked: false,
-            name: filter.name
+            name: filter.name,
           }))), []);
       }
     case "CHECK_FILTER":
       {
-        return state.map(filter => {
-          if (action.name == filter.name && action.value == filter.value) {
+        return state.map((filter) => {
+          if (action.name === filter.name && action.value === filter.value) {
             return {
               ...filter,
-              checked: !filter.checked
+              checked: !filter.checked,
             };
           }
           return filter;
@@ -29,11 +29,11 @@ function filterReducer(state = [], action) {
       }
     case "CLEAR_FILTER":
       {
-        return state.map(filter => {
+        return state.map((filter) => {
           if (filter.checked) {
             return {
               ...filter,
-              checked: false
+              checked: false,
             };
           }
           return filter;

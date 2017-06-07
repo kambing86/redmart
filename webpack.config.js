@@ -14,15 +14,15 @@ const config = {
     "babel-polyfill": [
       "babel-polyfill",
     ],
-    "index": [
+    index: [
       "./index.jsx",
     ],
-    "vendor": [
+    vendor: [
       "react",
       "react-dom",
       "redux",
       "react-redux",
-    ]
+    ],
   },
   context: sourcePath,
   output: {
@@ -31,8 +31,9 @@ const config = {
   },
   resolve: {
     modules: [
-      "node_modules"
+      "node_modules",
     ],
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
@@ -68,7 +69,7 @@ const config = {
         //   ]
         // }),
       },
-    ]
+    ],
   },
   externals: {
     // "gs": "gs",
@@ -84,8 +85,8 @@ const config = {
     new webpack.DefinePlugin({
       DEVELOPMENT: environment === "development",
       "process.env": {
-        NODE_ENV: JSON.stringify(environment)
-      }
+        NODE_ENV: JSON.stringify(environment),
+      },
     }),
     new CopyWebpackPlugin([{ from: "assets" }]),
     new webpack.optimize.UglifyJsPlugin({
@@ -104,7 +105,7 @@ const config = {
     }),
     new webpack.SourceMapDevToolPlugin({
       filename: "[file].map",
-      append: false
+      append: false,
     }),
     // new webpack.ProvidePlugin({
     //   "Promise": "bluebird"
@@ -121,7 +122,7 @@ const config = {
     // enable HMR globally
     // needed if webpack-dev-server run without --hot
     // hot: true,
-  }
+  },
 };
 
 if (environment === "development") {

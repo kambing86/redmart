@@ -1,6 +1,6 @@
 import React from "react";
 
-import Filter from "./Filter.jsx";
+import Filter from "./Filter";
 
 import "./FilterList.scss";
 
@@ -15,12 +15,10 @@ class FilterList extends React.Component {
     }, []);
     const filterCategoryArray = headerArray.map((header, index) => {
       const valueArray =
-        filters.filter(filter => filter.header == header)
-          .map((filter, index2) => {
-            return (
-              <Filter key={index2} filter={filter} onClick={onFilterClick} />
-            );
-          });
+        filters.filter(filter => filter.header === header)
+          .map((filter, index2) => (
+            <Filter key={index2} filter={filter} onClick={onFilterClick} />
+            ));
       return (
         <div key={index}>
           <h3>{header}</h3>
@@ -31,9 +29,12 @@ class FilterList extends React.Component {
     return (
       <div className="col-100">
         {filterCategoryArray}
-        <button className="btn-clear" onClick={() => {
-          onClearClick();
-        }}>Clear All</button>
+        <button
+          className="btn-clear"
+          onClick={() => {
+            onClearClick();
+          }}
+        >Clear All</button>
       </div>
     );
   }

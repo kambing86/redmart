@@ -5,25 +5,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
+let AppContainer;
 if (DEVELOPMENT) {
-  var AppContainer = require("./helpers/AppContainer").default;
+  AppContainer = require("./helpers/AppContainer").default;
 }
 
 import "./index.pug";
 import "./index.scss";
 
-import App from "./components/App.jsx";
-import { get } from "./helpers/ajaxRequest";
+import App from "./components/App";
+import ajaxRequest from "./helpers/ajaxRequest";
 import * as reducers from "./reducers";
 
-var enhancer;
+let enhancer;
 if (DEVELOPMENT) {
   enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 }
 
 const store = createStore(
   combineReducers(reducers),
-  enhancer
+  enhancer,
 );
 
 const appRoot = document.getElementById("app");
@@ -37,8 +38,7 @@ const render = () => {
         </Provider>
       </AppContainer>
     ), appRoot);
-  }
-  else {
+  } else {
     ReactDOM.render((
       <Provider store={store}>
         <App />
@@ -60,10 +60,10 @@ if (DEVELOPMENT) {
 
 (async () => {
   try {
-    const data = JSON.parse(await get("/data/products.json"));
+    const data = JSON.parse(await ajaxRequest.get("/data/products.json"));
     store.dispatch({
       type: "INIT_DATA",
-      data
+      data,
     });
   } catch (e) {
     console.error(e);
