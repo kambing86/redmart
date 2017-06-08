@@ -1,6 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
+import productValidator from "../validators/productValidator";
 
 import "./TopBar.scss";
 
@@ -23,6 +26,10 @@ const TopBar = ({ state: productsInCarts }) => {
       <Link to="/cart" className="link cart-button">Cart{cartBubble}</Link>
     </div>
   );
+};
+
+TopBar.propTypes = {
+  state: PropTypes.arrayOf(productValidator).isRequired,
 };
 
 export default connect(state => ({

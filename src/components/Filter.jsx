@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import filterValidator from "../validators/filterValidator";
 
 const Filter = ({ filter, onClick }) => {
   const { name, value, checked } = filter;
@@ -19,6 +22,11 @@ const Filter = ({ filter, onClick }) => {
       <label htmlFor={id}>{value}</label>
     </div>
   );
+};
+
+Filter.propTypes = {
+  filter: filterValidator.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Filter;

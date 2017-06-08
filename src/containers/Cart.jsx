@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import TopBar from "./TopBar";
@@ -6,6 +7,8 @@ import ProductList from "../components/ProductList";
 
 import addCart from "../actions/addCart";
 import removeCart from "../actions/removeCart";
+
+import productValidator from "../validators/productValidator";
 
 import "./Cart.scss";
 
@@ -35,6 +38,11 @@ const Cart = ({ state: productsInCarts, dispatch }) => {
       <div className="cart-total text-right">Total: ${totalAmount.toFixed(2)}</div>
     </div>
   );
+};
+
+Cart.propTypes = {
+  state: PropTypes.arrayOf(productValidator).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(state => ({

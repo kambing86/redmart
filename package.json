@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cross-env": "^5.0.0",
+    "cross-env": "^5.0.1",
     "express": "^4.15.3",
     "skip-map": "^1.0.0"
   },
@@ -26,7 +26,7 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.5.1",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
@@ -51,6 +51,7 @@
     "postcss": "^6.0.1",
     "postcss-clean": "^1.0.2",
     "postcss-loader": "^2.0.5",
+    "prop-types": "^15.5.10",
     "pug-html-loader": "^1.1.5",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

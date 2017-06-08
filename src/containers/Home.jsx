@@ -1,9 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import TopBar from "./TopBar";
 import FilterList from "../components/FilterList";
 import ProductList from "../components/ProductList";
+
+import filterValidator from "../validators/filterValidator";
+import productValidator from "../validators/productValidator";
 
 import clearFilter from "../actions/clearFilter";
 import checkFilter from "../actions/checkFilter";
@@ -12,7 +16,7 @@ import removeCart from "../actions/removeCart";
 
 import "./Home.scss";
 
-const Home = ({ dispatch, state }) => {
+const Home = ({ state, dispatch }) => {
   const { filters, products } = state;
   return (
     <div className="full-frame flex-col">
@@ -35,6 +39,14 @@ const Home = ({ dispatch, state }) => {
       </div>
     </div>
   );
+};
+
+Home.propTypes = {
+  state: PropTypes.shape({
+    filters: PropTypes.arrayOf(filterValidator).isRequired,
+    products: PropTypes.arrayOf(productValidator).isRequired,
+  }).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 function doFilter(filter, product) {

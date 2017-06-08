@@ -1,8 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import TopBar from "./TopBar";
+
+import productValidator from "../validators/productValidator";
+import historyValidator from "../validators/historyValidator";
 
 import "./ProductDetails.scss";
 
@@ -37,6 +41,12 @@ const ProductDetails = ({ state: product, dispatch, history }) => {
       {productInfo}
     </div>
   );
+};
+
+ProductDetails.propTypes = {
+  state: productValidator.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: historyValidator.isRequired,
 };
 
 export default withRouter(connect((state, ownProps) => ({

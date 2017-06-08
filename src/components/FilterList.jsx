@@ -1,6 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Filter from "./Filter";
+
+import filterValidator from "../validators/filterValidator";
 
 import "./FilterList.scss";
 
@@ -39,5 +42,11 @@ class FilterList extends React.Component {
     );
   }
 }
+
+FilterList.propTypes = {
+  filters: PropTypes.arrayOf(filterValidator).isRequired,
+  onClearClick: PropTypes.func.isRequired,
+  onFilterClick: PropTypes.func.isRequired,
+};
 
 export default FilterList;

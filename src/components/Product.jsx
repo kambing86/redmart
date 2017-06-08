@@ -1,6 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+
+import productValidator from "../validators/productValidator";
+import historyValidator from "../validators/historyValidator";
 
 import "./Product.scss";
 
@@ -55,6 +59,13 @@ const Product = ({ product, history, onAddCart, onRemoveCart }) => {
       </div>
     </Link>
   );
+};
+
+Product.propTypes = {
+  product: productValidator.isRequired,
+  history: historyValidator.isRequired,
+  onAddCart: PropTypes.func.isRequired,
+  onRemoveCart: PropTypes.func.isRequired,
 };
 
 export default withRouter(Product);
