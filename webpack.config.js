@@ -103,10 +103,11 @@ const config = {
         comments: false,
       },
     }),
-    new webpack.SourceMapDevToolPlugin({
-      filename: "[file].map",
-      append: false,
-    }),
+    // new webpack.SourceMapDevToolPlugin({
+    //   filename: "[file].map",
+    //   append: false,
+    // }),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     // new webpack.ProvidePlugin({
     //   "Promise": "bluebird"
     // }),
