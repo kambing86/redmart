@@ -15,8 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cross-env": "^5.0.1",
-    "express": "^4.15.3",
+    "cross-env": "^5.0.5",
+    "express": "^4.15.4",
     "skip-map": "^1.0.0"
   },
   "devDependencies": {
@@ -31,14 +31,14 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-airbnb": "^15.1.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
-    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react": "^7.2.0",
     "eslint-plugin-standard": "^3.0.1",
     "extract-loader": "^0.1.0",
     "file-loader": "^0.11.2",
@@ -48,7 +48,7 @@
     "node-notifier": "^5.1.2",
     "node-sass": "^4.5.3",
     "object-hash": "^1.1.8",
-    "postcss": "^6.0.6",
+    "postcss": "^6.0.8",
     "postcss-clean": "^1.0.3",
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.10",
@@ -56,13 +56,13 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "next",
-    "react-redux": "^5.0.5",
-    "react-router-dom": "^4.1.1",
-    "redux": "^3.7.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "webpack": "^3.1.0",
-    "webpack-dev-middleware": "^1.11.0",
-    "webpack-dev-server": "^2.5.1"
+    "webpack": "^3.5.3",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.7.1"
   }
 }
