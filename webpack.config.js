@@ -33,7 +33,7 @@ const config = {
     modules: [
       "node_modules",
     ],
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   module: {
     rules: [
@@ -53,6 +53,10 @@ const config = {
         options: {
           cacheDirectory: true,
         },
+      }, {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        loader: "awesome-typescript-loader",
       }, {
         test: /\.scss$/,
         use: [

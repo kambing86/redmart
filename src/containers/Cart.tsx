@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import { connect } from "react-redux";
 
 import TopBar from "./TopBar";
@@ -29,7 +28,6 @@ const Cart = ({ state: productsInCarts, dispatch }) => {
     <div className="cart-page full-frame flex-col">
       <TopBar className="flex-auto" />
       <ProductList
-        className="flex-auto"
         products={productsInCarts}
         onAddCart={(product) => { dispatch(addCart(product)); }}
         onRemoveCart={(product) => { dispatch(removeCart(product)); }}
@@ -38,11 +36,6 @@ const Cart = ({ state: productsInCarts, dispatch }) => {
       <div className="cart-total text-right">Total: ${totalAmount.toFixed(2)}</div>
     </div>
   );
-};
-
-Cart.propTypes = {
-  state: PropTypes.arrayOf(productValidator).isRequired,
-  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(state => ({
