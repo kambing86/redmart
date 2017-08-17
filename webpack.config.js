@@ -7,6 +7,7 @@ const sourcePath = path.join(__dirname, "src");
 const deployPath = path.join(__dirname, "dist");
 const serverPort = 8080;
 const environment = process.env.NODE_ENV;
+const isExpress = process.env.EXPRESS;
 
 const config = {
   devtool: "source-map",
@@ -54,7 +55,7 @@ const config = {
           cacheDirectory: true,
         },
       }, {
-        test: /\.ts(x?)$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "awesome-typescript-loader",
       }, {
@@ -136,7 +137,10 @@ if (environment === "development") {
   // enable HMR globally
   // needed if webpack-dev-server run without --hot
   // config.entry["index"].unshift(`webpack-dev-server/client?http://localhost:${serverPort}/`, "webpack/hot/only-dev-server");
-  // config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  if (isExpress) {
+    config.entry.index.unshift("webpack-hot-middleware/client");
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  }
 
   // prints more readable module names in the browser console on HMR updates
   config.plugins.push(new webpack.NamedModulesPlugin());
