@@ -7,8 +7,8 @@ const webpackConfig = require("./webpack.config");
 
 const app = express();
 
-const environment = process.env.NODE_ENV;
-if (environment === "development") {
+const isDevelopment = process.env.NODE_ENV === "development";
+if (isDevelopment) {
   const compiler = webpack(webpackConfig);
   app.use(webpackDevMiddleware(compiler, {
     // publicPath: webpackConfig.output.path,
@@ -20,4 +20,9 @@ if (environment === "development") {
 
 app.use(skipMap());
 
-app.listen(8080, () => {});
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  if (isDevelopment) {
+    require("opn")(`http://localhost:${port}`);
+  }
+});

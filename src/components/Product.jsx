@@ -23,7 +23,7 @@ const Product = ({ product, history, onAddCart, onRemoveCart }) => {
         }}
       >
         Add To Cart
-        </button>
+      </button>
     );
   } else {
     controlComponents = (
