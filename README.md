@@ -44,7 +44,7 @@ docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)
 docker tag redmart $(minishift openshift registry)/myproject/redmart
 docker push $(minishift openshift registry)/myproject/redmart
 oc new-app --image-stream=redmart --name=redmart
-oc expose dc redmart --name=redmart --port=8080
+oc expose dc redmart --name=redmart --type=NodePort --port=8080
 oc expose service redmart
 minishift openshift service redmart --in-browser
 ```
