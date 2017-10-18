@@ -13,7 +13,8 @@
 - Docker in Openshift / Minishift
 
 # How to deploy to Heroku
-```
+```bash
+#!/bin/bash
 heroku login
 heroku container:login
 heroku git:remote -a kambing86-redmart
@@ -23,6 +24,7 @@ heroku container:push web
 # How to deploy to Minikube
 start minikube with local registry
 ```bash
+#!/bin/bash
 eval $(minikube docker-env)
 docker build . -t redmart
 docker tag redmart localhost:5000/redmart
@@ -36,6 +38,7 @@ minikube service redmart
 # How to deploy to Minishift
 start minishift
 ```bash
+#!/bin/bash
 eval $(minishift docker-env)
 docker build . -t redmart
 eval $(minishift oc-env)
