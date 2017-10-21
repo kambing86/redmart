@@ -2,7 +2,13 @@
 1. install chrome
 2. install node.js v8.7.0
 3. install yarn v1.2.1
-4. ```yarn && yarn start:dev```
+4. ```yarn && yarn start```
+
+# Environment Variables
+- create `.env` file for local and deployment
+```
+NODE_ENV=production
+```
 
 # Key Features
 - Express with Webpack 2
@@ -22,32 +28,22 @@ heroku container:push web
 ```
 
 # How to deploy to Minikube
+install minikube
+```bash
+brew cask install minikube
+brew install kubectl
+```
 start minikube with local registry
 ```bash
-#!/bin/bash
-eval $(minikube docker-env)
-docker build . -t redmart
-docker tag redmart localhost:5000/redmart
-docker push localhost:5000/redmart
-kubectl config use-context minikube
-kubectl run redmart --image=localhost:5000/redmart --port=8080
-kubectl expose deployment redmart --type=NodePort
-minikube service redmart
+./minikube.sh redmart
 ```
 
 # How to deploy to Minishift
+install minishift
+```bash
+brew cask install minishift
+```
 start minishift
 ```bash
-#!/bin/bash
-eval $(minishift docker-env)
-docker build . -t redmart
-eval $(minishift oc-env)
-oc config use-context minishift
-docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)
-docker tag redmart $(minishift openshift registry)/myproject/redmart
-docker push $(minishift openshift registry)/myproject/redmart
-oc new-app --image-stream=redmart --name=redmart
-oc expose dc redmart --name=redmart --type=NodePort --port=8080
-oc expose service redmart
-minishift openshift service redmart --in-browser
+./minishift.sh redmart
 ```
