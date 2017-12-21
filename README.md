@@ -1,7 +1,7 @@
 # How to Run
 1. install chrome
-2. install node.js v8.7.0
-3. install yarn v1.2.1
+2. install node.js v8.9.3
+3. install yarn v1.3.2
 4. ```yarn && yarn start```
 
 # Environment Variables
@@ -11,7 +11,7 @@ NODE_ENV=production
 ```
 
 # Key Features
-- Express with Webpack 2
+- Express with Webpack 3
 - React with Redux / React Router
 - Support Typescript
 - Docker in Heroku (https://kambing86-redmart.herokuapp.com)
@@ -19,8 +19,8 @@ NODE_ENV=production
 - Docker in Openshift / Minishift
 
 # How to deploy to Heroku
-```bash
-#!/bin/bash
+```sh
+#!/bin/sh
 heroku login
 heroku container:login
 heroku git:remote -a kambing86-redmart
@@ -29,21 +29,21 @@ heroku container:push web
 
 # How to deploy to Minikube
 install minikube
-```bash
+```sh
 brew cask install minikube
 brew install kubectl
 ```
 start minikube with local registry
-```bash
-./minikube.sh redmart
+```sh
+./minikube.sh
 ```
 
 # How to deploy to Minishift
 install minishift
-```bash
+```sh
 brew cask install minishift
 ```
 start minishift
-```bash
-./minishift.sh redmart
+```sh
+./minishift.sh
 ```
